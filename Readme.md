@@ -52,6 +52,10 @@ Hasil yang Terjadi:
 Urutan fokus berpindah dari satu menu ke menu lain
 Lolos
 
+**Catatan hasil validator before vs after**
+1. Error yang ditunjukkan oleh validator disebabkan pada kode baris 21 saya terdapat tag penutup </article> sedangkan diatasnya tidak ada tanda pembuka tag <article>
+2. Untuk fix errornya saya menghapus tag </article> penutup yang berada di kode baris 21 yang dimana ini adalah tag yang nyasar karena saya lupa menghapus karena menyalin dari week 2 
+
 4. AI Use Statement (Penggunaan AI)
 **Alat yang Digunakan:** Gemini AI
 **Tujuan:** Membantu memahami perintah modul, membantu memperbaiki error CSS, dan memberikan panduan penulisan laporan.
