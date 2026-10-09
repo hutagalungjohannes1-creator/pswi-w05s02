@@ -1,0 +1,24 @@
+.nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.card {
+    flex: 1 1 15rem;
+    padding: 1rem;
+    border: 1px solid #ccd;
+    min-width: 0;
+}
+
+.card h2 {
+    overflow-wrap: anywhere;
+}
