@@ -2,62 +2,52 @@ Nama    : Johannes Hutagalung
 Nim     : 41426034
 Prodi   : DIV-Teknologi Rekayasa Perangkat Lunak
 
-Laporan Praktikum PSW I - Minggu 5 Sesi 2
+Laporan Praktikum PSW I - Minggu 5 Sesi 3
 
-1. Cara Menjalankan Web
-A. Buka folder proyek ini di VS Code.
-B. Klik kanan file index.html, lalu pilih Open with Live Server.
-C. Buka DevTools di browser (tekan tombol F12) untuk melihat tampilan dan mencoba ukuran layar.
+1. Mengubah Container
+a. Tindakan yang Dilakukan:
+Mengubah nama class elemen kontainer pembungkus pada index.html dari cards menjadi catalog.
+b. Menghapus properti Flexbox pada kontainer di file style.css dan menerapkan aturan CSS Grid
+c. Menguji tampilan dua kolom pada browser melalui server lokal.
+Mengaktifkan Grid Overlay melalui Browser DevTools (tab Elements) dan mengamati struktur DOM anak langsung.
 
-2. Catatan Hasil Percobaan
- **Navigasi Fleksibel:**
-  Saya memakai display: flex dan flex-wrap: wrap pada navigasi. Ketika ukuran layar disempitkan, tombol navigasi tidak terpotong melainkan otomatis pindah ke baris bawahnya. Saat dicoba ganti flex-direction: column, tampilan navigasi berubah menjadi tersusun ke bawah.
-  **Card Fleksibel:** 
-  Saya memberi aturan flex: 15rem dan min-width: 0 pada bagian card. Di layar lebar (1200px) card akan berjejer ke samping, sedangkan di layar HP yang sempit (360px) card otomatis tersusun ke bawah.
- **Konten Judul Panjang:**
-    Saya mencoba memasukkan judul yang sangat panjang tanpa spasi. Dengan menambahkan overflow-wrap: anywhere pada CSS judul (card h2), tulisan panjang tersebut tidak melipat keluar kotak card, bahkan saat browser di-zoom sampai 200%.
+2. Grid Adaptif
+Tindakan yang Dilakukan:
 
-3. Tabel Hasil Pengujian (Matriks Uji)
-Kasus yang Diuji:
-**Layar Lebar (1200px)**
-Yang Saya Lakukan:
-Mengubah lebar layar browser ke 1200px
-Hasil yang Terjadi:
-Keempat card berjejer rapi ke samping
-Lolos (`bukti/responsive-1200px.png`) 
+a. Mengubah definisi kolom pada .catalog di style.css menggunakan pola repeat(auto-fit, minmax(min(100%, 15rem), 1fr)).
+b. Menambahkan item <article> kelima pada struktur HTML.
+c. Menguji responsivitas tata letak pada viewport 320px, 768px, dan 1200px menggunakan fitur Responsive Design Mode di DevTools.
+Bukti / Catatan Pengujian:
+Pada folder bukti ada beberapa screenshot
 
-Kasus yang Diuji
-**Layar HP Sempit (360px)**
-Yang Saya Lakukan:
-Mengubah lebar layar browser ke 360px
-Hasil yang Terjadi:
-Card berpindah baris dan tersusun ke bawah
-Status:
-Lolos (`bukti/responsive-360px.png`)
+3. REVIEW LAYOUT
+Tindakan:
+a. Memeriksa urutan tulisan di HTML supaya tetap rapi dan sesuai urutan aslinya tanpa diubah-ubah paksa posisinya menggunakan kode
+b. Mencoba tes halaman web dengan kondisi jumlah kartu yang berbeda-beda: pas dicoba tanpa kartu (0), saat ada 1 kartu, sampai dikembalikan lagi menjadi 5 kartu.
+Mengatur jarak dalam kartu (padding) menggunakan kode: padding: var(--space-2, 1rem);.
 
-Kasus yang Diuji
-**Judul Panjang & Zoom 200%**
-Yang Saya Lakukan:
-Memasukkan judul panjang tanpa spasi & zoom 200%
-Hasil yang Terjadi:
-Teks memotong rapi ke bawah, kotak tidak hancur 
-Status:
-Lolos (`bukti/zoom-200px.png`)
+Hasilnya:
+Tampilan web tetap stabil, rapi, dan tidak berantakan meskipun jumlah kartunya dikurangi atau ditambah
 
-Kasus yang Diuji:
-**Navigasi Pakai Tombol Tab**
-Yang Saya Lakukan:
-Menekan tombol `Tab` di keyboard berulang kali
-Hasil yang Terjadi:
-Urutan fokus berpindah dari satu menu ke menu lain
-Lolos
+Alasan Pakai Grid dan Flexbox:
+CSS Grid dipakai untuk bagian luar (katalog) karena paling gampang buat bikin kotak-kotak yang otomatis sejajar rapi ke samping atau ke bawah sendiri menyesuaikan layar.
+Flexbox dipakai untuk bagian dalam kartu karena sangat pas buat merapikan isi kartu secara vertikal (dari judul, deskripsi, sampai tombol link ke bawah) dengan jarak yang rapi
 
-**Catatan hasil validator before vs after**
-1. Error yang ditunjukkan oleh validator disebabkan pada kode baris 21 saya terdapat tag penutup </article> sedangkan diatasnya tidak ada tanda pembuka tag <article>
-2. Untuk fix errornya saya menghapus tag </article> penutup yang berada di kode baris 21 yang dimana ini adalah tag yang nyasar karena saya lupa menghapus karena menyalin dari week 2 
+4. LATIHAN MANDIRI DAN MATRIKS UJI.
+Pengujian Ukuran Layar Kecil (320px):
+Saat halaman web diuji pada ukuran layar sangat kecil (seperti 320px), hasilnya tidak mengalami overflow atau geseran ke samping. Teks dan kartu menyesuaikan lebar layar dengan rapi.
+Pengujian Jumlah Kartu (Satu dan Lima Kartu):
+Ketika diuji dengan satu kartu maupun lima kartu sekaligus, tata letak tetap terbaca dengan sangat baik. Posisi kartu otomatis berpindah (auto-placement) mengikuti luas ruang yang tersedia di layar.
+Pengujian Urutan Tab (Navigasi Keyboard):
+Saat tombol Tab pada keyboard ditekan berulang kali, urutan fokus berpindah secara teratur sesuai dengan urutan elemen di dalam HTML (DOM), mulai dari menu navigasi atas hingga turun ke tombol-tombol yang ada di dalam kartu.
 
-4. AI Use Statement (Penggunaan AI)
-**Alat yang Digunakan:** Gemini AI
-**Tujuan:** Membantu memahami perintah modul, membantu memperbaiki error CSS, dan memberikan panduan penulisan laporan.
-**Bagian yang Dibantu:** Penjelasan cara kerja Flexbox, perbaikan struktur HTML, dan penyusunan tabel pengujian.
-**Cara Memverifikasi:** Saya mengecek langsung hasilnya di browser Google Chrome, mencoba fitur DevTools (overlay flexbox & mode responsif), dan memastikan kodenya berjalan dengan benar.
+Hasil Laporan Eksperimen (Kasus Normal, Batas, dan Gagal):
+Kasus Normal: Ketika menampilkan 5 kartu secara penuh di layar laptop, semua kartu berjejer ke samping dengan jarak spasi yang pas dan rapi (bukti screenshot tersimpan di folder bukti).
+Kasus Batas: Saat ukuran layar diperkecil menyerupai HP, tampilan katalog otomatis berubah menjadi satu kolom ke bawah tanpa ada bagian yang terpotong (bukti screenshot di bukti/grid-adaptif-320px.png)
+Kasus Gagal: Saat diuji dengan teks judul yang sangat panjang tanpa spasi, teks tersebut tetap aman dan otomatis turun ke bawah karena sudah dilindungi oleh kode overflow-wrap: anywhere pada CSS.
+
+AI Use Statement
+Alat yang Digunakan: Asisten AI (Gemini).
+Tujuan Penggunaan: Digunakan untuk memahami konsep tata letak responsif (responsive layout), mendiagnosis kesalahan penulisan sintaks CSS (troubleshooting), serta membantu menyusun format laporan dokumentasi pada file README.md
+Bagian Bantuan: AI membantu memberikan penjelasan mengenai struktur CSS Grid dan Flexbox, memperbaiki struktur blok kode .card yang sempat bersarang (nested), serta menyusun draf catatan pengamatan dan matriks uji dalam bentuk teks biasa.
+Verifikasi: Seluruh saran kode, hasil penyesuaian CSS, dan skenario pengujian telah diuji langsung melalui peramban web (browser) lokal serta divalidasi kesesuaian tampilannya dengan ketentuan modul sebelum dimasukkan ke dalam laporan.

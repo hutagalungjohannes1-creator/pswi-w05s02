@@ -6,19 +6,21 @@
     padding: 0;
 }
 
-.cards {
-    display: flex;
-    flex-wrap: wrap;
+.catalog {
+    display: grid;
     gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
 }
-
 .card {
-    flex: 1 1 15rem;
-    padding: 1rem;
-    border: 1px solid #ccd;
-    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: var(--space-2, 1rem);
+    border: 1px solid #1e6fe0;
 }
 
-.card h2 {
-    overflow-wrap: anywhere;
+.card h2, .card p {margin: 0;}
+.card a {
+    align-self: start;
 }
+    
